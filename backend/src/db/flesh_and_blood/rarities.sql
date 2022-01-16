@@ -1,0 +1,4 @@
+CREATE OR ALTER TABLE FleshAndBlood_Rarities (
+    id SMALLINT NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
