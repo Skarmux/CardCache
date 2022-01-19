@@ -15,7 +15,7 @@ mod pages;
 use pages::{
     home::Home, page_not_found::PageNotFound,
 };
-//use yew::html::Scope;
+use yew::html::Scope;
 
 #[derive(Routable, PartialEq, Clone, Debug)]
 pub enum Route
@@ -80,13 +80,14 @@ impl Component for App {
     //     true
     // }
 
-    fn view(&self, _ctx: &Context<Self>) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
 
         //let games = self.state.games.clone();
         //let illustrators = self.state.illustrators.clone();
 
         html! {
             <BrowserRouter>
+                { self.view_nav(ctx.link())}
                 <main>
                     <Switch<Route> render={Switch::render(switch)} />
                 </main>
@@ -101,41 +102,30 @@ impl Component for App {
                     </div>
                 </footer>
             </BrowserRouter>
-            // <div class={classes!("app")}>
-            //     <div class={classes!("nav")}>
-            //         <Link<Route> classes={classes!("navbar-item")} to={Route::Home}>
-            //             { "Home" }
-            //         </Link<Route>>
-            //     </div>
-            //     <div class={classes!("content")}>
-
-            //         {"Hello, World!"}
-
-            //         <Link<Route> to={Route::GameCreate}>
-            //             { "GameCreate" }
-            //         </Link<Route>>
-
-            //         <Link<Route> to={Route::GameDetail { id: 0 } }>
-            //             { "GameDetail" }
-            //         </Link<Route>>
-
-            //         <Link<Route> to={Route::CardCreate}>
-            //             { "CardCreate" }
-            //         </Link<Route>>
-
-            //         <Link<Route> to={Route::CardDetail { id: 0 } }>
-            //             { "CardDetail" }
-            //         </Link<Route>>
-
-            //     </div>
-            // </div>
         }
     }
 }
 
 impl App
 {
+    fn view_nav(&self, link: &Scope<Self>) -> Html {
+        html! {
+            <nav class="fixed top-0 left-0 h-screen w-16
+                        flex flex-col
+                        bg-gray-900 text-white">
+                { self.view_icon("DASH") }
+                { self.view_icon("FAB") }
+            </nav>
+        }
+    }
 
+    fn view_icon(&self, text: &str) -> Html {
+        html! {
+            <div class="sidebar-icon">
+                {text}
+            </div>
+        }
+    }
 }
 
 fn switch(routes: &Route) -> Html {
