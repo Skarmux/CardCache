@@ -5,3 +5,4 @@ static/*.wasm
 static/*.d.ts
 static/wasm.js
 static/package.json
+frontend/dist
