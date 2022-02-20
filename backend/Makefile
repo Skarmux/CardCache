@@ -1,4 +1,5 @@
 build:
+	clear
 	@cargo build
 
 clean:

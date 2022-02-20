@@ -1,5 +1,6 @@
 build:
 	clear
+	tailwindcss -c tailwind.config.js -i tailwind.in.css -o tailwind.css --minify
 	@RUSTFLAGS= trunk build --release
 
 clean:
@@ -7,7 +8,8 @@ clean:
 
 web:
 	clear
-	@RUSTFLAGS= trunk serve --release
+	tailwindcss -c tailwind.config.js -i tailwind.in.css -o tailwind.css --minify
+	@RUSTFLAGS= trunk serve --release --watch tailwind.css
 
 docs: build
 	@cargo doc --no-deps

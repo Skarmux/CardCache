@@ -25,6 +25,7 @@ gloo-timers = "0.2"
 # anyhow = "1"
 # wasm-bindgen = "0.2.78"
 # reqwasm = "0.4.0"
+# bonnie = "0.3.2" # https://github.com/arctic-hen7/bonnie
 common = { version = "0.1.0", path = "../common" }
 
 [dependencies.web-sys]
