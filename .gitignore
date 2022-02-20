@@ -1,7 +1,15 @@
 .DS_Store
-/target
-Cargo.lock
+
 static/*.wasm
 static/*.d.ts
 static/wasm.js
 static/package.json
+
+frontend/dist
+frontend/node_modules
+frontend/package-lock.json
+frontend/package.json
+frontend/tailwind.css
+
+/target
+Cargo.lock

@@ -32,29 +32,14 @@ impl Component for Card
     }
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
-        let Self { id } = self;
+        let Self { id: _ } = self;
         html! {
-            <div class="card">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-128x128">
-                                <img alt="Cracked Bauble" src={"https://storage.googleapis.com/fabmaster/media/images/U-WTR224.width-450.png"} />
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <p class="title is-3">{ &id }</p>
-                            <p>
-                                { "Info Text" }
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                // <footer class="card-footer">
-                //     <Link<Route> classes={classes!("card-footer-item")} to={Route::Author { id: author.seed }}>
-                //         { "Profile" }
-                //     </Link<Route>>
-                // </footer>
+            <div class="w-40">
+                // <p class="text-center font-bold">{ format!{"Name {}", &id} }</p>
+                <figure>
+                    <img alt="Cracked Bauble" src={"https://storage.googleapis.com/fabmaster/media/images/U-WTR224.width-450.png"} />
+                </figure>
+                // <p class="text-center">{ format!{"{},99€", &id} }</p>
             </div>
         }
     }

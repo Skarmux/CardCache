@@ -54,24 +54,15 @@ impl Component for Home
     {
         // let onclick = ctx.link().callback(|_| Msg::Click);
         html! {
-            <div class="tile is-ancestor is-vertical">
-
-                <div class="tile is-child hero">
-                    <div class="hero-body container pb-0">
-                        <h1 class="title is-1">{ "CardVault" }</h1>
-                        <h2 class="subtitle">{ "...your collections best friend!" }</h2>
-                    </div>
-                </div>
-
-                // <div class="tile is-child">
-                //     <figure class="image is-3by1">
-                //         <img alt="A random image for the input term 'yew'." src="https://source.unsplash.com/random/1200x400/?yew" />
-                //     </figure>
-                // </div>
-
-                <div class="tile is-parent container">
-                    { self.view_card_tiles() }
-                </div>
+            <div class="flex flex-col gap-4 text-white">
+                <h1 class="text-lg font-bold">{"Welcome To Rathe"}</h1>
+                { self.view_card_tiles() }
+                <h1 class="text-lg font-bold">{"Arcane Rising"}</h1>
+                { self.view_card_tiles() }
+                <h1 class="text-lg font-bold">{"Crucible Of War"}</h1>
+                { self.view_card_tiles() }
+                <h1 class="text-lg font-bold">{"Monarch"}</h1>
+                { self.view_card_tiles() }
             </div>
         }
     }
@@ -108,17 +99,17 @@ impl Home
     fn view_card_tiles(&self) -> Html {
         //let card_id: i32 = 0;
         html! {
-            <div class="columns is-multiline is-centered">
-                <div class="column is-narrow"><Card card_id=0 /></div>
-                <div class="column is-narrow"><Card card_id=1 /></div>
-                <div class="column is-narrow"><Card card_id=2 /></div>
-                <div class="column is-narrow"><Card card_id=3 /></div>
-                <div class="column is-narrow"><Card card_id=4 /></div>
-                <div class="column is-narrow"><Card card_id=5 /></div>
-                <div class="column is-narrow"><Card card_id=6 /></div>
-                <div class="column is-narrow"><Card card_id=7 /></div>
-                <div class="column is-narrow"><Card card_id=8 /></div>
-                <div class="column is-narrow"><Card card_id=9 /></div>
+            <div class="grid grid-cols-6 place-items-center gap-8 space-x-1">
+                <Card card_id=0 />
+                <Card card_id=1 />
+                <Card card_id=2 />
+                <Card card_id=3 />
+                <Card card_id=4 />
+                <Card card_id=5 />
+                <Card card_id=6 />
+                <Card card_id=7 />
+                <Card card_id=8 />
+                <Card card_id=9 />
             </div>
         }
     }
