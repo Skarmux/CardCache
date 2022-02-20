@@ -7,7 +7,7 @@ static/package.json
 
 frontend/dist
 frontend/node_modules
-frontent/package-lock.json
+frontend/package-lock.json
 frontend/package.json
 frontend/tailwind.css
 
