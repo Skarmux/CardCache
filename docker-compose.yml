@@ -2,31 +2,39 @@ version: "3.0"
 
 services:
 
-  cardcache_db:
+  db:
     image: postgres:9.6.12
     ports:
       - 7878:5432
 
-  # cardcache:
-  #   image: rust:alpine3
-  #   volumes:
-  #     - ./backend
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app/backend
+      - ./common:/app/common
 
-  # cardcache_web:
-  #   image: rust:alpine3
-  #   depends_on:
-  #     - tailwindcss
-  #     - database
-  #   ports:
-  #     -8080:8080
-  #   volumes:
-  #     - ./frontent
-    
+  webserver:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - server
+      - tailwindcss
+    ports:
+      - 8080:8080
+    volumes:
+      - ./frontend:/app/frontend
+      - ./common:/app/common
+  
   tailwindcss:
     build:
       context: ./frontend
       dockerfile: tailwind.Dockerfile
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app/frontend
     tty: true
     command: npx tailwindcss -c tailwind.config.js -i tailwind.in.css -o tailwind.css --minify --watch

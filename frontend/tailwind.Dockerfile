@@ -1,16 +1,17 @@
-FROM node:17-alpine3.14
+FROM node:17-alpine3.15
 
-WORKDIR /app
+WORKDIR /app/frontend
 
-RUN npm install \
-    tailwindcss@latest \
-    # @tailwindcss/typography@latest \
-    # @tailwindcss/forms@latest \
-    # @tailwindcss/aspect-ratio@latest \
-    # @tailwindcss/line-clamp@latest \
-    postcss@latest \
-    autoprefixer@latest
-
-#WORKDIR /
-
-#CMD [ "npx", "tailwindcss", "-c", "app/tailwind.config.js", "-i", "app/tailwind.in.css", "-o", "app/tailwind.css", "--minify", "--watch", "app/**"]
+RUN npm install -g \
+     tailwindcss@latest \
+    # @tailwindcss/typography \
+    # @tailwindcss/forms \
+    # @tailwindcss/aspect-ratio \
+    # @tailwindcss/line-clamp \
+    # postcss@latest \
+    # autoprefixer@latest
+#
+# CMD in docker does not run --watch option in a loop,
+# the command is being executed with shell context from within docker-compose
+#
+# CMD ["npx", "tailwindcss", "-i", "tailwind.in.css", "-o", "tailwind.css", "-c", "tailwind.config.js", "--minify", "--watch"]

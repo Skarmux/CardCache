@@ -15,7 +15,7 @@ fn row_to_card(row: &Row) -> Card {
     Card { id, name, code, game_id, illustrator_id }
 }
 
-pub async fn create(db_pool: &DBPool, game_id: i32, body: CardRequest) -> Result<Card> {
+pub async fn create(db_pool: &DBPool, _game_id: i32, body: CardRequest) -> Result<Card> {
     let con = get_db_con(db_pool).await?;
     let query = format!( "INSERT INTO {} (name, code, game_id, illustrator_id) VALUES ($1, $2, $3, $4) RETURNING *", TABLE );
     let row = con
