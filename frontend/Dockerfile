@@ -1,14 +1,11 @@
-FROM rust:alpine3.15
+FROM rust:slim-buster
 
-RUN apk update && apk add \
-    cargo \
-    pkgconfig
+RUN apt update && apt install -y cargo
 
 WORKDIR /app/frontend
 
 RUN cargo install --locked trunk
-RUN cargo install wasm-bindgen-cli
+RUN cargo build
+#RUN cargo install wasm-bindgen-cli
 
-# from Makefile:
-# tailwindcss -c tailwind.config.js -i tailwind.in.css -o tailwind.css --minify
-CMD ["cargo", "run", "trunk", "serve", "--release", "--watch", "tailwind.css"]
+CMD ["trunk", "serve", "--release", "--watch", "tailwind.css"]

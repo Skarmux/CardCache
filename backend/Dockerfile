@@ -1,9 +1,9 @@
-FROM rust:alpine3.15
+FROM rust:slim-buster
 
-RUN apk update && apk add cargo
+RUN apt update && apt install -y cargo
 
 WORKDIR /app/backend
 
 # RUN cargo install
 
-CMD ["cargo","run"]
+CMD ["cargo", "run"]
