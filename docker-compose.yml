@@ -1,4 +1,4 @@
-version: "3.0"
+version: '3.4'
 
 services:
 
@@ -36,4 +36,4 @@ services:
       dockerfile: tailwind.Dockerfile
     volumes:
       - ./frontend:/app/frontend
-    tty: true
+    tty: true # allows --watch option to work
