@@ -1,6 +1,6 @@
 FROM node:17-alpine3.15
 
-WORKDIR /app/frontend
+WORKDIR /opt/app
 
 RUN npm install -g \
      tailwindcss@latest

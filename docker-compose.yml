@@ -7,33 +7,43 @@ services:
     ports:
       - 7878:5432
 
-  server:
+  cardcache:
     build:
-      context: ./backend
+      context: ./
       dockerfile: Dockerfile
     depends_on:
       - db
-    volumes:
-      - ./backend:/app/backend
-      - ./common:/app/common
-
-  webserver:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    depends_on:
-      - server
       - tailwindcss
-    ports:
-      - 8080:8080
     volumes:
-      - ./frontend:/app/frontend
-      - ./common:/app/common
+      - ./backend:/opt/app/backend
+      - ./common:/opt/app/common
+      - ./frontend:/opt/app/frontend
+
+  # server:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: backend.Dockerfile
+  #   depends_on:
+  #     - db
+  #   volumes:
+  #     - ./backend:/opt/app
+
+  # webserver:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: frontend.Dockerfile
+  #   depends_on:
+  #     - server
+  #     - tailwindcss
+  #   ports:
+  #     - 8080:8080
+  #   volumes:
+  #     - ./frontend:/opt/app
   
   tailwindcss:
     build:
       context: ./frontend
       dockerfile: tailwind.Dockerfile
     volumes:
-      - ./frontend:/app/frontend
+      - ./frontend:/opt/app
     tty: true # allows --watch option to work
