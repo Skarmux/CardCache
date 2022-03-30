@@ -7,38 +7,31 @@ services:
     ports:
       - 7878:5432
 
-  cardcache:
-    build:
+  server:
+    build: 
       context: ./
       dockerfile: Dockerfile
+    image: skarmux/cardcache
     depends_on:
       - db
-      - tailwindcss
     volumes:
       - ./backend:/opt/app/backend
       - ./common:/opt/app/common
+    tty: true
+    command: cargo run
+
+  webserver:
+    image: skarmux/cardcache
+    depends_on:
+      - cardcache
+      - tailwindcss
+    ports:
+      - 8080:8080
+    volumes:
       - ./frontend:/opt/app/frontend
-
-  # server:
-  #   build:
-  #     context: ./backend
-  #     dockerfile: backend.Dockerfile
-  #   depends_on:
-  #     - db
-  #   volumes:
-  #     - ./backend:/opt/app
-
-  # webserver:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: frontend.Dockerfile
-  #   depends_on:
-  #     - server
-  #     - tailwindcss
-  #   ports:
-  #     - 8080:8080
-  #   volumes:
-  #     - ./frontend:/opt/app
+      - ./common:/opt/app/common
+    tty: true
+    command: trunk serve --release --watch tailwindcss
   
   tailwindcss:
     build:
