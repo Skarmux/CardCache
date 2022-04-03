@@ -1,6 +1,6 @@
-DROP TABLE Cards;
-DROP TABLE Games;
-DROP TABLE Illustrators;
+-- DROP TABLE Cards;
+-- DROP TABLE Games;
+-- DROP TABLE Illustrators;
 
 CREATE TABLE IF NOT EXISTS Games (
     id SERIAL PRIMARY KEY,

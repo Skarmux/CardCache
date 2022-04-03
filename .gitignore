@@ -5,11 +5,14 @@ static/*.d.ts
 static/wasm.js
 static/package.json
 
+backend/target
+
 frontend/dist
 frontend/node_modules
 frontend/package-lock.json
 frontend/package.json
 frontend/tailwind.css
+frontend/target
 
 /target
 Cargo.lock

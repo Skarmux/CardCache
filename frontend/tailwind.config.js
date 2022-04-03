@@ -1,10 +1,10 @@
 module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.rs", 
-    "./src/**/*.css",
-    "./src/**/*.html",
+    "./src/**/*.{rs,html,css}",
   ],
-  theme: {},
+  theme: {
+    extend: {},
+  },
   plugins: [],
 }

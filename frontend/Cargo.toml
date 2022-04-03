@@ -16,6 +16,7 @@ log = "0.4"
 getrandom = { version = "0.2", features = ["js"] }
 rand = { version = "0.8", features = ["small_rng"] }
 wasm-logger = "0.2"
+# wasm-bindgen-cli
 yew = "0.19.0"
 yew-router = "^0.16"
 serde = {version = "1.0", features = ["derive"] }
