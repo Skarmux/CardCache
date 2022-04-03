@@ -4,6 +4,9 @@ FROM rust:slim-buster
 RUN apt update 
 RUN apt install -y cargo
 
+RUN rustup target add wasm32-unknown-unknown
+RUN cargo install --locked trunk
+
 WORKDIR /opt/app
 
 ADD ./common /opt/app/common

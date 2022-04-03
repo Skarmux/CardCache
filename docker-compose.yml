@@ -3,11 +3,13 @@ version: '3.4'
 services:
 
   db:
+    container_name: db
     image: postgres:9.6.12
     ports:
       - 7878:5432
 
   server:
+    container_name: server
     build: 
       context: ./
       dockerfile: Dockerfile
@@ -18,12 +20,14 @@ services:
       - ./backend:/opt/app/backend
       - ./common:/opt/app/common
     tty: true
+    working_dir: /opt/app/backend
     command: cargo run
 
   webserver:
+    container_name: webserver
     image: skarmux/cardcache
     depends_on:
-      - cardcache
+      - server
       - tailwindcss
     ports:
       - 8080:8080
@@ -31,9 +35,11 @@ services:
       - ./frontend:/opt/app/frontend
       - ./common:/opt/app/common
     tty: true
-    command: trunk serve --release --watch tailwindcss
+    working_dir: /opt/app/frontend
+    command: trunk serve --release --watch tailwind.css
   
   tailwindcss:
+    container_name: tailwindcss
     build:
       context: ./frontend
       dockerfile: tailwind.Dockerfile
