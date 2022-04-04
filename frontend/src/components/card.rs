@@ -34,7 +34,7 @@ impl Component for Card
     fn view(&self, _ctx: &Context<Self>) -> Html {
         let Self { id: _ } = self;
         html! {
-            <div class="w-40">
+            <div class="w-40 parallax-card">
                 // <p class="text-center font-bold">{ format!{"Name {}", &id} }</p>
                 <figure>
                     <img alt="Cracked Bauble" src={"https://storage.googleapis.com/fabmaster/media/images/U-WTR224.width-450.png"} />
