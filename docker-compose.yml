@@ -10,7 +10,7 @@ services:
 
   server:
     container_name: server
-    build: 
+    build:
       context: ./
       dockerfile: Dockerfile
     image: skarmux/cardcache
