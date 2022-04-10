@@ -1,6 +1,8 @@
 [workspace]
 members = [
     "backend",
+    "backend/entity",
+    "backend/migration",
     "common",
     "frontend"
 ]

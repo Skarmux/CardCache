@@ -21,7 +21,7 @@ services:
       - ./common:/opt/app/common
     tty: true
     working_dir: /opt/app/backend
-    command: cargo run
+    # command: cargo run
 
   webserver:
     container_name: webserver
