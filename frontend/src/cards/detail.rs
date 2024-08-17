@@ -1,11 +1,11 @@
 use common::*;
-use yew::format::{ Json, Nothing };
+use yew::format::{Json, Nothing};
 use yew::prelude::*;
 //use yew::services::fetch::{ FetchService, FetchTask, Request, Response };
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
-    pub card_id: i32
+    pub card_id: i32,
 }
 
 pub struct Detail {
@@ -38,7 +38,7 @@ impl Component for Detail {
             cards: None,
             fetch_cards_task: None,
             fetch_card_task: None,
-            delete_card_task: None
+            delete_card_task: None,
         }
     }
 
@@ -86,8 +86,8 @@ impl Component for Detail {
             }
             Msg::MakeDeleteCardReq(card_id) => {
                 let req = Request::delete(&format!("http://localhost:8000/cards/{}", card_id))
-                .body(Nothing)
-                .expect("can make req to backend");
+                    .body(Nothing)
+                    .expect("can make req to backend");
 
                 let cb = self.link.callback(
                     move |response: Response<Json<Result<(), anyhow::Error>>>| {
@@ -101,10 +101,13 @@ impl Component for Detail {
             }
             Msg::RespDeleteCard(resp, card_id) => {
                 if resp.status().is_success() {
-                    self.cards = self
-                        .cards
-                        .as_ref()
-                        .map(|cards| cards.into_iter().filter(|p| p.id != card_id).cloned().collect());
+                    self.cards = self.cards.as_ref().map(|cards| {
+                        cards
+                            .into_iter()
+                            .filter(|p| p.id != card_id)
+                            .cloned()
+                            .collect()
+                    });
                 }
             }
             Msg::RespCard(_resp) => {

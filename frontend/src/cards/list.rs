@@ -1,6 +1,6 @@
-use super::super::{ Anchor, AppRoute };
+use super::super::{Anchor, AppRoute};
 use common::*;
-use yew::format::{ Json, Nothing };
+use yew::format::{Json, Nothing};
 use yew::prelude::*;
 //use yew::services::fetch::{ FetchService, FetchTask, Request, Response };
 

@@ -12,14 +12,11 @@ mod pages;
 //mod games;
 //mod cards;
 
-use pages::{
-    home::Home, page_not_found::PageNotFound,
-};
+use pages::{home::Home, page_not_found::PageNotFound};
 use yew::html::Scope;
 
 #[derive(Routable, PartialEq, Clone, Debug)]
-pub enum Route
-{
+pub enum Route {
     #[at("/game/create")]
     GameCreate,
 
@@ -46,13 +43,11 @@ pub enum Route
 //     illustrators: Vec<Illustrator>
 // }
 
-pub enum Msg
-{
+pub enum Msg {
     // AddToCollection()
 }
 
-struct App
-{
+struct App {
     //state: State,
     //link: ComponentLink<Self>,
 }
@@ -81,7 +76,6 @@ impl Component for App {
     // }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-
         //let games = self.state.games.clone();
         //let illustrators = self.state.illustrators.clone();
 
@@ -100,8 +94,7 @@ impl Component for App {
     }
 }
 
-impl App
-{
+impl App {
     fn view_nav(&self, _link: &Scope<Self>) -> Html {
         html! {
             <nav class="fixed top-0 left-0 h-screen w-16 p-2 gap-1
@@ -125,23 +118,23 @@ fn switch(routes: &Route) -> Html {
             html! { <Home /> }
         }
         Route::GameCreate => {
-            html! { 
-                //<PostList /> 
+            html! {
+                //<PostList />
             }
         }
         Route::GameDetail { id: _ } => {
-            html! { 
-                //<Author seed={id} /> 
+            html! {
+                //<Author seed={id} />
             }
         }
         Route::CardCreate => {
-            html! { 
-                //<AuthorList /> 
+            html! {
+                //<AuthorList />
             }
         }
         Route::CardDetail { id: _ } => {
-            html! { 
-                //<Home /> 
+            html! {
+                //<Home />
             }
         }
         Route::NotFound => {

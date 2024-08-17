@@ -1,8 +1,11 @@
 use common::*;
 use serde_json::from_str;
-use yew_router::{ agent::{ RouteAgent, RouteRequest }, prelude::* };
 use yew::format::Json;
 use yew::prelude::*;
+use yew_router::{
+    agent::{RouteAgent, RouteRequest},
+    prelude::*,
+};
 //use yew::services::{ fetch::{ FetchService, FetchTask, Request, Response }, ConsoleService };
 
 #[derive(Properties, Clone, PartialEq)]
@@ -11,8 +14,7 @@ pub struct Props {
     //pub illustrators: Vec<Illustrator>
 }
 
-pub struct Create
-{
+pub struct Create {
     props: Props,
     link: ComponentLink<Self>,
     fetch_task: Option<FetchTask>,
@@ -22,8 +24,7 @@ pub struct Create
     state_illustrator_id: Option<i32>,
 }
 
-pub enum Msg
-{
+pub enum Msg {
     MakeReq(),
     Resp(Result<CardResponse, anyhow::Error>),
 
@@ -33,8 +34,7 @@ pub enum Msg
     EditIllustrator(String),
 }
 
-impl Create
-{
+impl Create {
     fn render_form(&self) -> Html {
         let edit_name = self
             .link
@@ -44,19 +44,15 @@ impl Create
             .link
             .callback(move |e: InputData| Msg::EditCode(e.value));
 
-        let edit_game = self.link.callback(move |e: ChangeData| 
-            match e {
-                ChangeData::Select(elem) => Msg::EditGame(elem.value()),
-                _ => unreachable!("only used on select field"),
-            }
-        );
+        let edit_game = self.link.callback(move |e: ChangeData| match e {
+            ChangeData::Select(elem) => Msg::EditGame(elem.value()),
+            _ => unreachable!("only used on select field"),
+        });
 
-        let edit_illustrator = self.link.callback(move |e: ChangeData| 
-            match e {
-                ChangeData::Select(elem) => Msg::EditIllustrator(elem.value()),
-                _ => unreachable!("only used on select field"),
-            }
-        );
+        let edit_illustrator = self.link.callback(move |e: ChangeData| match e {
+            ChangeData::Select(elem) => Msg::EditIllustrator(elem.value()),
+            _ => unreachable!("only used on select field"),
+        });
 
         // let game_options: Vec<Html> = self.props.games
         //     .iter()
@@ -104,8 +100,7 @@ impl Create
     }
 }
 
-impl Component for Create
-{
+impl Component for Create {
     type Properties = Props;
     type Message = Msg;
 
@@ -129,7 +124,6 @@ impl Component for Create
 
     fn update(&mut self, msg: Self::Message) -> bool {
         match msg {
-
             Msg::MakeReq() => {
                 let body = CardRequest {
                     name: self.state_name.clone(),
@@ -184,7 +178,6 @@ impl Component for Create
                 let res = from_str::<i32>(&input);
                 self.state_illustrator_id = res.ok();
             }
-
         }
         true
     }

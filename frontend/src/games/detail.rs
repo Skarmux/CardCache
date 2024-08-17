@@ -1,6 +1,6 @@
-use super::super::{ Anchor, AppRoute };
+use super::super::{Anchor, AppRoute};
 use common::*;
-use yew::format::{ Json, Nothing };
+use yew::format::{Json, Nothing};
 use yew::prelude::*;
 //use yew::services::fetch::{ FetchService, FetchTask, Request, Response };
 
@@ -16,7 +16,7 @@ pub struct Detail {
     game: Option<GameResponse>,
     fetch_game_cards_task: Option<FetchTask>,
     fetch_game_task: Option<FetchTask>,
-    delete_card_task: Option<FetchTask>
+    delete_card_task: Option<FetchTask>,
 }
 
 pub enum Msg {
@@ -25,7 +25,7 @@ pub enum Msg {
     MakeGameReq(i32),
     RespGame(Result<GameResponse, anyhow::Error>),
     MakeDeleteCardReq(i32),
-    RespDeleteCard(Response<Json<Result<(), anyhow::Error>>>, i32)
+    RespDeleteCard(Response<Json<Result<(), anyhow::Error>>>, i32),
 }
 
 impl Detail {
@@ -141,8 +141,8 @@ impl Component for Detail {
             }
             Msg::MakeDeleteCardReq(card_id) => {
                 let req = Request::delete(&format!("http://localhost:8000/cards/{}", card_id))
-                .body(Nothing)
-                .expect("can make request to backend");
+                    .body(Nothing)
+                    .expect("can make request to backend");
 
                 let cb = self.link.callback(
                     move |response: Response<Json<Result<(), anyhow::Error>>>| {
@@ -166,10 +166,13 @@ impl Component for Detail {
             }
             Msg::RespDeleteCard(resp, card_id) => {
                 if resp.status().is_success() {
-                    self.cards = self
-                        .cards
-                        .as_ref()
-                        .map(|cards| cards.into_iter().filter(|p| p.id != card_id).cloned().collect());
+                    self.cards = self.cards.as_ref().map(|cards| {
+                        cards
+                            .into_iter()
+                            .filter(|p| p.id != card_id)
+                            .cloned()
+                            .collect()
+                    });
                 }
             }
         }

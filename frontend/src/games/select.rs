@@ -1,13 +1,11 @@
 use common::*;
 //use super::super::{ Anchor, AppRoute };
-use yew::format::{ Json, Nothing };
+use yew::format::{Json, Nothing};
 use yew::prelude::*;
 //use yew::services::fetch::{ FetchService, Referrer, Request, Response };
 
 #[derive(Properties, Clone, PartialEq)]
-pub struct Props {
-    
-}
+pub struct Props {}
 
 pub struct Select {
     link: ComponentLink<Self>,
@@ -36,7 +34,8 @@ impl Component for Select {
     }
 
     fn view(&self) -> Html {
-        let game_options: Vec<Html> = self.games
+        let game_options: Vec<Html> = self
+            .games
             .iter()
             .map(|g: &Game| {
                 html! {

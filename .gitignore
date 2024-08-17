@@ -16,3 +16,14 @@ frontend/target
 
 /target
 Cargo.lock
+
+.devenv
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml

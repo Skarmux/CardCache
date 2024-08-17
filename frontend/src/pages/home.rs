@@ -1,6 +1,4 @@
-use crate::components::{
-    card::Card,
-};
+use crate::components::card::Card;
 //use super::super::{ Anchor, AppRoute };
 //use anyhow::Error;
 //use yew::format::Json;
@@ -9,20 +7,17 @@ use yew::prelude::*;
 //use web_sys::HtmlInputElement;
 //use yew::{ Component, Context, html, Html };
 
-
-
 // #[derive(PartialEq, Properties)]
 // struct Props {
-    
+
 // }
 
-// struct State 
+// struct State
 // {
 //     games: Vec<Game>,
 // }
 
-pub struct Home
-{
+pub struct Home {
     //node_ref: NodeRef,
     // state: State,
     // link: ComponentLink<Self>,
@@ -34,13 +29,11 @@ pub struct Home
 //     GetGames,
 // }
 
-impl Component for Home
-{
+impl Component for Home {
     type Message = ();
     type Properties = ();
 
-    fn create(_ctx: &Context<Self>) -> Self
-    {
+    fn create(_ctx: &Context<Self>) -> Self {
         //let games = vec![];
 
         Self {
@@ -50,8 +43,7 @@ impl Component for Home
         }
     }
 
-    fn view(&self, _ctx: &Context<Self>) -> Html
-    {
+    fn view(&self, _ctx: &Context<Self>) -> Html {
         // let onclick = ctx.link().callback(|_| Msg::Click);
         html! {
             <div class="flex flex-col gap-4 text-white">
@@ -91,11 +83,9 @@ impl Component for Home
     //         }
     //     }
     // }
-
 }
 
-impl Home
-{
+impl Home {
     fn view_card_tiles(&self) -> Html {
         //let card_id: i32 = 0;
         html! {

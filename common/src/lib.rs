@@ -1,4 +1,4 @@
-use serde::{ Deserialize, Serialize };
+use serde::{Deserialize, Serialize};
 
 // GAME
 
@@ -6,7 +6,7 @@ use serde::{ Deserialize, Serialize };
 pub struct Game {
     pub id: i32,
     pub name: String,
-    pub acronym: String
+    pub acronym: String,
 }
 
 impl Game {
@@ -14,7 +14,7 @@ impl Game {
         Game {
             id: game.id,
             name: game.name,
-            acronym: game.acronym
+            acronym: game.acronym,
         }
     }
 }
@@ -22,14 +22,14 @@ impl Game {
 #[derive(Serialize, Deserialize, Clone, PartialEq, Debug)]
 pub struct GameRequest {
     pub name: String,
-    pub acronym: String
+    pub acronym: String,
 }
 
 #[derive(Serialize, Deserialize, Clone, PartialEq, Debug)]
 pub struct GameResponse {
     pub id: i32,
     pub name: String,
-    pub acronym: String
+    pub acronym: String,
 }
 
 impl GameResponse {
@@ -37,7 +37,7 @@ impl GameResponse {
         GameResponse {
             id: game.id,
             name: game.name,
-            acronym: game.acronym
+            acronym: game.acronym,
         }
     }
 }
@@ -47,34 +47,34 @@ impl GameResponse {
 #[derive(Deserialize, Clone, PartialEq, Debug)]
 pub struct Illustrator {
     pub id: i32,
-    pub name: String
+    pub name: String,
 }
 
 impl Illustrator {
     pub fn of(illustrator: IllustratorResponse) -> Illustrator {
         Illustrator {
-            id:   illustrator.id,
-            name: illustrator.name
+            id: illustrator.id,
+            name: illustrator.name,
         }
     }
 }
 
 #[derive(Serialize, Deserialize, Clone, PartialEq, Debug)]
 pub struct IllustratorRequest {
-    pub name: String
+    pub name: String,
 }
 
 #[derive(Serialize, Deserialize, Clone, PartialEq, Debug)]
 pub struct IllustratorResponse {
     pub id: i32,
-    pub name: String
+    pub name: String,
 }
 
 impl IllustratorResponse {
     pub fn of(illustrator: Illustrator) -> IllustratorResponse {
         IllustratorResponse {
-            id:   illustrator.id,
-            name: illustrator.name
+            id: illustrator.id,
+            name: illustrator.name,
         }
     }
 }
@@ -100,7 +100,7 @@ pub struct CardRequest {
 
 #[derive(Serialize, Deserialize, Clone, PartialEq, Debug)]
 pub struct CardResponse {
-    pub id:   i32,
+    pub id: i32,
     pub name: String,
     pub code: String,
     pub game_id: i32,
@@ -110,7 +110,7 @@ pub struct CardResponse {
 impl CardResponse {
     pub fn of(card: Card) -> CardResponse {
         CardResponse {
-            id:   card.id,
+            id: card.id,
             name: card.name,
             code: card.code,
             game_id: card.game_id,

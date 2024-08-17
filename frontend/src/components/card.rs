@@ -4,18 +4,15 @@ use yew::prelude::*;
 //use yew_router::prelude::*;
 
 #[derive(Clone, Debug, PartialEq, Properties)]
-pub struct Props
-{
+pub struct Props {
     pub card_id: i32,
 }
 
-pub struct Card
-{
+pub struct Card {
     id: i32,
 }
 
-impl Component for Card
-{
+impl Component for Card {
     type Message = ();
     type Properties = Props;
 

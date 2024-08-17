@@ -6,8 +6,8 @@ use yew::prelude::*;
 
 pub struct List {
     fetch_task: Option<Referrer>,
-    games:      Option<Vec<GameResponse>>,
-    link:       ComponentLink<Self>,
+    games: Option<Vec<GameResponse>>,
+    link: ComponentLink<Self>,
 }
 
 pub enum Msg {

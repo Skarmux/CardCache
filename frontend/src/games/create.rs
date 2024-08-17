@@ -2,20 +2,23 @@ use common::*;
 use yew::format::Json;
 use yew::prelude::*;
 //use yew::services::{ fetch::{ FetchService, FetchTask, Request, Response}, ConsoleService };
-use yew_router::{ agent::{ RouteAgent, RouteRequest }, prelude::* };
+use yew_router::{
+    agent::{RouteAgent, RouteRequest},
+    prelude::*,
+};
 
 pub struct Create {
     link: ComponentLink<Self>,
     fetch_task: Option<FetchTask>,
     state_name: String,
-    state_acronym: String
+    state_acronym: String,
 }
 
 pub enum Msg {
     MakeReq(),
     Resp(Result<GameResponse, anyhow::Error>),
     EditName(String),
-    EditAcronym(String)
+    EditAcronym(String),
 }
 
 impl Create {
@@ -53,7 +56,7 @@ impl Component for Create {
             link,
             fetch_task: None,
             state_name: String::new(),
-            state_acronym: String::new()
+            state_acronym: String::new(),
         }
     }
 
@@ -70,7 +73,7 @@ impl Component for Create {
             Msg::MakeReq() => {
                 let body = GameRequest {
                     name: self.state_name.clone(),
-                    acronym: self.state_acronym.clone()
+                    acronym: self.state_acronym.clone(),
                 };
                 let req = Request::post("http://localhost:8000/games")
                     .header("Content-Type", "application/json")
